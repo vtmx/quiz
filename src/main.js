@@ -1,37 +1,15 @@
+import './main.css';
 import data from './az-900.json';
 
 class Quiz {
   questionsCount = 0;
   maxQuestions = 20;
   isLastQuestion = false;
+  randomQuestions = 0;
 
-  start(questions) {
-    this.loadQuestions(questions);
+  suffleQuestions(array) {
+    console.log(data);
   }
-
-  loadQuestions(questions) {
-    fetch(questions).then((response) => {
-      response.json().then((questions) => console.log(questions));
-    });
-  }
-
-  createQuestions(questions) {}
-
-  activeQuestion(question) {}
-
-  changeQuiz(quiz) {}
-
-  chooseOption(option) {}
-
-  changeQuestion() {
-    if (questionCount === maxQuestions) {
-      lastQuestion = true;
-    }
-  }
-
-  finish() {}
-
-  reset() {}
 
   suffleArray(array) {
     let tempArray = [...array];
@@ -49,7 +27,8 @@ class Quiz {
 }
 
 const quiz = new Quiz();
-// quiz.start('az-900.json');
 // console.log(data.title);
 // console.log(data['questions'][0]['question']);
 console.log(quiz.suffleArray(data['questions']));
+quiz.suffleQuestions();
+// console.log(quiz.suffleQuestions(data['questions']));

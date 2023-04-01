@@ -1,6 +1,7 @@
 {
   "name": "quiz",
   "source": "src/index.html",
+  "license": "MIT",
   "scripts": {
     "dev": "parcel",
     "build": "parcel build"

@@ -3,21 +3,13 @@
   "questions": [
     {
       "question": "Qual é o cavaleiro de Pégado?",
-      "options": [
-        { "option": "Seiya", "correct": true },
-        { "option": "Ikki" },
-        { "option": "Shiriyu" }
-      ],
+      "options": [{ "option": "Seiya", "correct": true }, { "option": "Ikki" }, { "option": "Shiriyu" }],
       "details": "Seiya recebeu a armadura na Grécia."
     },
     {
       "question": "Qual é o cavaleiro de Fênix?",
-      "options": [
-        { "option": "Hyoga" },
-        { "option": "Ikki", "correct": true },
-        { "option": "Shun" }
-      ],
-      "details": "Seiya recebeu a armadura na Grécia."
+      "options": [{ "option": "Hyoga" }, { "option": "Ikki", "correct": true }, { "option": "Shun" }],
+      "details": "Ikki recebeu a armadura na Ilha da Rainha da Morte."
     }
   ]
 }

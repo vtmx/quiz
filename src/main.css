@@ -1,1 +1,116 @@
-/* main */
+:root {
+  --border-radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #243a5e;
+}
+
+#quiz {
+  display: grid;
+  width: 450px;
+  padding: 16px;
+  border-radius: var(--border-radius);
+  background: #eee;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.option {
+  display: flex;
+  gap: 8px;
+  padding: 16px 8px;
+  background: #ddd;
+  border-radius: var(--border-radius);
+  transition: all 0.15s;
+}
+
+.option:hover,
+.option:has(input:checked) {
+  background: #f7f7f7;
+}
+
+input[type='radio'] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+}
+
+input[type="radio"] {
+  appearance: none;
+  display: grid;
+  place-content: center;
+  margin: 0;
+  transform: translateY(-0.075em);
+  background: white;
+  border: none;
+  color: currentColor;
+}
+
+input[type="radio"]::before {
+  content: '';
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+summary,
+.option:hover {
+  cursor: pointer;
+}
+
+#progress {
+  display: flex;
+  height: 8px;
+  background: #ddd;
+}
+
+#progress::after {
+  content: '';
+  height: 8px;
+  width: 100px;
+  background: #5485d4;
+  border-radius: var(--border-radius);
+}
+
+#controls {
+  display: flex;
+  place-content: space-around;
+  gap: 16px;
+}
+
+#controls input[type='button'] {
+  width: 100%;
+  padding: 8px 16px;
+  background: #ddd;
+  border: none;
+  border-radius: var(--border-radius);
+}
