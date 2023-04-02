@@ -1,9 +1,16 @@
 :root {
+  --accent-color: #61afef;
+  --text-color: #eee;
+  --text-color-invert: #111;
   --border-radius: 4px;
+  --control-color: rgba(255 255 255 / 0.05);
+  --control-color-hover: rgba(255 255 255 / 0.2);
+  --control-transition: all .15s;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
+  font: normal 14px 'Segoe UI', sans-serif;
 }
 
 body {
@@ -12,59 +19,92 @@ body {
   place-items: center;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #243a5e;
+  font: 14px/1 'Segoe UI', sans-serif;
+  background: #0f0f0f;
+  color: var(--text-color);
+}
+
+h1, h2, p {
+  margin: 0;
+  padding: 0;
 }
 
 #quiz {
   display: grid;
+  gap: 16px;
   width: 450px;
   padding: 16px;
   border-radius: var(--border-radius);
-  background: #eee;
+  /* background: #2d2d2d; */
+  /* box-shadow: 0 4px 16px rgba(0 0 0 / 0.2); */
+}
+
+h1 {
+  font-size: 24px;
+}
+
+#progress, 
+#progress::after {
+  border-radius: var(--border-radius);
+}
+
+#progress {
+  display: flex;
+  height: 8px;
+  background: var(--control-color-hover);
+}
+
+#progress::after {
+  content: '';
+  height: 8px;
+  width: 100px;
+  background: var(--accent-color);
+}
+
+h2 {
+  font-size: 18px;
+}
+
+.question {
+  display: grid;
+  gap: 16px;
 }
 
 .options {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 8px;
-  margin-bottom: 16px;
 }
 
-.option {
+label {
   display: flex;
   gap: 8px;
-  padding: 16px 8px;
-  background: #ddd;
+  padding: 16px 12px;
+  background: var(--control-color);
   border-radius: var(--border-radius);
-  transition: all 0.15s;
+  transition: var(--control-transition);
 }
 
-.option:hover,
-.option:has(input:checked) {
-  background: #f7f7f7;
+label:hover {
+  background: var(--control-color-hover);
 }
 
-input[type='radio'] {
-  appearance: none;
-  background-color: #fff;
-  margin: 0;
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 50%;
+label:has(input:checked) {
+  background: #fff;
+  color: #000;
 }
 
 input[type="radio"] {
   appearance: none;
   display: grid;
+  width: 1.15em;
+  height: 1.15em;
   place-content: center;
   margin: 0;
+  font: inherit;
   transform: translateY(-0.075em);
-  background: white;
-  border: none;
+  background: #fff;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
   color: currentColor;
 }
 
@@ -75,10 +115,16 @@ input[type="radio"]::before {
   border-radius: 50%;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  background-color: CanvasText;
+  background: CanvasText;
+}
+
+input[type="radio"]:checked{
+  background: var(--text-color-invert);
+  border-color: var(--control-color);
 }
 
 input[type="radio"]:checked::before {
+  background: #fff;
   transform: scale(1);
 }
 
@@ -87,30 +133,27 @@ summary,
   cursor: pointer;
 }
 
-#progress {
-  display: flex;
-  height: 8px;
-  background: #ddd;
-}
-
-#progress::after {
-  content: '';
-  height: 8px;
-  width: 100px;
-  background: #5485d4;
-  border-radius: var(--border-radius);
+details p {
+  margin-top: 8px;
 }
 
 #controls {
   display: flex;
   place-content: space-around;
-  gap: 16px;
+  gap: 8px;
 }
 
-#controls input[type='button'] {
+input[type='button'] {
   width: 100%;
-  padding: 8px 16px;
-  background: #ddd;
+  padding: 12px 16px;
+  background: var(--control-color); 
   border: none;
   border-radius: var(--border-radius);
+  color: var(--text-color); 
+  transition: var(--control-transition);
+}
+
+input[type='button']:hover {
+  cursor: pointer;
+  background: var(--control-color-hover);
 }
