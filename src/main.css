@@ -1,11 +1,20 @@
 :root {
-  --accent-color: #61afef;
-  --text-color: #eee;
-  --text-color-invert: #111;
+  /* http://www.vis4.net/palettes/#/11%7Cs%7C000000,ffffff%7Cffffe0,ff005e,93003a%7C1%7C1 */
+  --color-neutral-5: #0f0f0f;
+  --color-neutral-10: #1b1b1b;
+  --color-neutral-20: #303030;
+  --color-neutral-30: #474747;
+  --color-neutral-40: #5e5e5e;
+  --color-neutral-50: #777777;
+  --color-neutral-60: #919191;
+  --color-neutral-70: #ababab;
+  --color-neutral-80: #c6c6c6;
+  --color-neutral-90: #e2e2e2;
+  --color-accent: #61afef;
   --border-radius: 4px;
-  --control-color: rgba(255 255 255 / 0.05);
-  --control-color-hover: rgba(255 255 255 / 0.2);
-  --control-transition: all .15s;
+  --spacing-1: 8px;
+  --spacing-2: 16px;
+  --transition: all .15s;
 }
 
 *, *::before, *::after {
@@ -14,8 +23,8 @@
 }
 
 ::selection {
-  background: var(--accent-color);
-  color: var(--text-color-invert);
+  background: var(--color-accent);
+  color: var(--color-neutral-10);
 }
 
 body {
@@ -25,8 +34,8 @@ body {
   margin: 0;
   padding: 0;
   font: 14px/1 'Segoe UI', sans-serif;
-  background: #0f0f0f;
-  color: var(--text-color);
+  background: var(--color-neutral-5);
+  color: var(--color-neutral-90);
 }
 
 h1, h2, p {
@@ -38,8 +47,8 @@ h1, h2, p {
   display: grid;
   gap: 24px;
   width: 450px;
-  margin: 16px;
-  padding: 16px;
+  margin: var(--spacing-2);
+  padding: var(--spacing-2);
   border-radius: var(--border-radius);
 }
 
@@ -55,14 +64,14 @@ h1 {
 #progress {
   display: flex;
   height: 8px;
-  background: var(--control-color-hover);
+  background: var(--color-neutral-20);
 }
 
 #progress::after {
   content: '';
   height: 8px;
   width: 100px;
-  background: var(--accent-color);
+  background: var(--color-accent);
 }
 
 h2 {
@@ -71,7 +80,7 @@ h2 {
 
 .question {
   display: grid;
-  gap: 16px;
+  gap: var(--spacing-2);
 }
 
 .options {
@@ -82,16 +91,16 @@ h2 {
 label {
   user-select: none;
   display: flex;
-  gap: 8px;
-  padding: 16px 12px;
-  background: var(--control-color);
+  gap: var(--spacing-1);
+  padding: var(--spacing-2) 12px;
+  background: var(--color-neutral-10);
   border-radius: var(--border-radius);
-  transition: var(--control-transition);
+  transition: var(--transition);
 }
 
 label:hover {
   cursor: pointer;
-  background: var(--control-color-hover);
+  background: var(--color-neutral-20);
 }
 
 label:has(input:checked) {
@@ -108,41 +117,38 @@ input[type="radio"] {
   margin: 0;
   font: inherit;
   transform: translateY(-0.075em);
-  background: #eee;
-  border: 2px solid var(--text-color);
+  background: var(--color-neutral-10);
+  border: 2px solid var(--color-neutral-90);
   border-radius: 50%;
   color: currentColor;
 }
 
-input[type="radio"]::before {
-  content: '';
-  width: 0.75em;
-  height: 0.75em;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  background: CanvasText;
+input[type="radio"]:checked {
+  background: var(--color-neutral-90);
+  border-color: var(--color-neutral-10);
+  border-width: 3px;
 }
 
-input[type="radio"]:checked{
-  background: var(--text-color-invert);
-  border-color: var(--control-color);
+input[type="radio"]:focus {
+  outline: none;
 }
 
-input[type="radio"]:checked::before {
-  background: #eee;
-  transform: scale(1);
+label:has(input[type="radio"]:focus-visible) {
+  background: var(--color-neutral-90);
+  color: var(--color-neutral-10);
 }
+
 
 details {
   display: grid;
-  background: var(--control-color);
+  order: 1;
+  background: var(--color-neutral-10);
   border-radius: var(--border-radius);
 }
 
 summary {
   user-select: none;
-  padding: 16px;
+  padding: var(--spacing-2);
   border-radius: var(--border-radius);
 }
 
@@ -150,37 +156,54 @@ summary:hover {
   cursor: pointer;
 }
 
+summary:focus {
+  outline: none;
+}
+
+summary:focus-visible {
+  outline: 2px solid var(--color-neutral-90);
+}
+
 .explain {
-  padding: 0 16px 16px;
+  padding: 0 var(--spacing-2) var(--spacing-2);
 }
 
 details p {
-  margin-top: 8px;
+  margin-top: var(--spacing-1);
 }
 
 #controls {
   display: flex;
   place-content: space-around;
-  gap: 16px;
+  gap: var(--spacing-2);
 }
 
 input[type='button'] {
   width: 100%;
-  padding: 14px 16px;
-  background: var(--control-color); 
+  padding: var(--spacing-2);
+  background: var(--color-neutral-10); 
   border: none;
   border-radius: var(--border-radius);
-  color: var(--text-color); 
-  transition: var(--control-transition);
+  color: var(--color-neutral-90); 
+  transition: var(--transition);
 }
 
 input[type='button']:hover {
   cursor: pointer;
-  background: var(--control-color-hover);
+  background: var(--color-neutral-20);
+}
+
+input[type='button']:focus {
+  outline: none;
+  transition: none;
+}
+input[type='button']:focus-visible {
+  outline: 2px solid var(--color-neutral-90);
+
 }
 
 input[type='button']:active {
-  background: #eee;
-  color: #111;
+  background: var(--color-neutral-90);
+  color: var(--color-neutral-10);
   transition: none;
 }
