@@ -1,19 +1,22 @@
 :root {
   /* http://www.vis4.net/palettes/#/11%7Cs%7C000000,ffffff%7Cffffe0,ff005e,93003a%7C1%7C1 */
-  --color-neutral-5: #0f0f0f;
-  --color-neutral-10: #1b1b1b;
-  --color-neutral-20: #303030;
-  --color-neutral-30: #474747;
-  --color-neutral-40: #5e5e5e;
-  --color-neutral-50: #777777;
-  --color-neutral-60: #919191;
-  --color-neutral-70: #ababab;
-  --color-neutral-80: #c6c6c6;
-  --color-neutral-90: #e2e2e2;
+  --color-neutral-5: hsl(0 0% 5%);
+  --color-neutral-10: hsl(0 0% 10%);
+  --color-neutral-20: hsl(0 0% 20%);
+  --color-neutral-30: hsl(0 0% 30%);
+  --color-neutral-40: hsl(0 0% 40%);
+  --color-neutral-50: hsl(0 0% 50%);
+  --color-neutral-60: hsl(0 0% 60%);
+  --color-neutral-70: hsl(0 0% 70%);
+  --color-neutral-80: hsl(0 0% 80%);
+  --color-neutral-90: hsl(0 0% 90%);
   --color-accent: #61afef;
+
   --border-radius: 4px;
-  --spacing-1: 8px;
-  --spacing-2: 16px;
+
+  --size-1: 8px;
+  --size-2: 16px;
+
   --transition: all .15s;
 }
 
@@ -45,15 +48,16 @@ h1, h2, p {
 
 #quiz {
   display: grid;
-  gap: 24px;
+  gap: 8px;
   width: 450px;
-  margin: var(--spacing-2);
-  padding: var(--spacing-2);
+  margin: var(--size-2);
+  padding: var(--size-2);
   border-radius: var(--border-radius);
 }
 
 h1 {
   font-size: 24px;
+  margin-bottom: 16px;
 }
 
 #progress, 
@@ -65,6 +69,10 @@ h1 {
   display: flex;
   height: 8px;
   background: var(--color-neutral-20);
+}
+
+#question-number {
+  margin-bottom: 16px;
 }
 
 #progress::after {
@@ -80,7 +88,7 @@ h2 {
 
 .question {
   display: grid;
-  gap: var(--spacing-2);
+  gap: var(--size-2);
 }
 
 .options {
@@ -91,8 +99,8 @@ h2 {
 label {
   user-select: none;
   display: flex;
-  gap: var(--spacing-1);
-  padding: var(--spacing-2) 12px;
+  gap: var(--size-1);
+  padding: var(--size-2) 12px;
   background: var(--color-neutral-10);
   border-radius: var(--border-radius);
   transition: var(--transition);
@@ -134,10 +142,13 @@ input[type="radio"]:focus {
 }
 
 label:has(input[type="radio"]:focus-visible) {
+  background: var(--color-neutral-20);
+}
+
+label:has(input[type="radio"]:checked:focus-visible) {
   background: var(--color-neutral-90);
   color: var(--color-neutral-10);
 }
-
 
 details {
   display: grid;
@@ -148,7 +159,7 @@ details {
 
 summary {
   user-select: none;
-  padding: var(--spacing-2);
+  padding: var(--size-2);
   border-radius: var(--border-radius);
 }
 
@@ -165,22 +176,23 @@ summary:focus-visible {
 }
 
 .explain {
-  padding: 0 var(--spacing-2) var(--spacing-2);
+  padding: 0 var(--size-2) var(--size-2);
 }
 
 details p {
-  margin-top: var(--spacing-1);
+  margin-top: var(--size-1);
 }
 
 #controls {
   display: flex;
   place-content: space-around;
-  gap: var(--spacing-2);
+  gap: var(--size-2);
+  margin-block: 8px;
 }
 
 input[type='button'] {
   width: 100%;
-  padding: var(--spacing-2);
+  padding: var(--size-2);
   background: var(--color-neutral-10); 
   border: none;
   border-radius: var(--border-radius);
