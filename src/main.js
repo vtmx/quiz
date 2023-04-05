@@ -15,6 +15,19 @@ class Quiz {
     return array;
   }
 
+  randomizeQuestions() {
+    this.shuffleArray(this.questions);
+    return this.questions;
+  }
+
+  randomizeAnswers() {
+    for (let i = 0; i < this.questions.length; i++) {
+      const question = this.questions[i];
+      this.shuffleArray(question.answers);
+    }
+    return this.questions;
+  }
+
   randomizeQuestionsAndAnswers() {
     for (let i = 0; i < this.questions.length; i++) {
       const question = this.questions[i];
@@ -28,8 +41,5 @@ class Quiz {
 const quiz = new Quiz();
 // console.log(data.title);
 // console.log(data['questions'][0]['question']);
-// console.log(quiz.suffleArray(data['questions']));
-// console.log(quiz.suffleQuestions(data['questions']));
-
 quiz.randomizeQuestionsAndAnswers();
 console.log(quiz.questions);
