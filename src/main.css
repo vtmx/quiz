@@ -91,7 +91,7 @@ h2 {
   gap: var(--size-2);
 }
 
-.options {
+.anwsers {
   display: grid;
   gap: 8px;
 }
