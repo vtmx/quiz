@@ -1,33 +1,25 @@
 :root {
-  /* http://www.vis4.net/palettes/#/11%7Cs%7C000000,ffffff%7Cffffe0,ff005e,93003a%7C1%7C1 */
   --color-neutral-5: hsl(0 0% 5%);
   --color-neutral-10: hsl(0 0% 10%);
   --color-neutral-20: hsl(0 0% 20%);
-  --color-neutral-30: hsl(0 0% 30%);
-  --color-neutral-40: hsl(0 0% 40%);
-  --color-neutral-50: hsl(0 0% 50%);
-  --color-neutral-60: hsl(0 0% 60%);
-  --color-neutral-70: hsl(0 0% 70%);
-  --color-neutral-80: hsl(0 0% 80%);
   --color-neutral-90: hsl(0 0% 90%);
   --color-accent: #61afef;
 
-  --border-radius: 4px;
+  --size-1: 0.5rem;
+  --size-2: 1rem;
+  --size-3: 1.5rem;
 
-  --size-1: 8px;
-  --size-2: 16px;
-
-  --transition: all .15s;
+  --border-radius: 0.25rem;
+  --transition: all 0.15s;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  font: normal 14px 'Segoe UI', sans-serif;
-}
-
-::selection {
-  background: var(--color-accent);
-  color: var(--color-neutral-10);
+  margin: 0;
+  padding: 0;
+  font: normal 1rem/1 'Segoe UI', sans-serif;
 }
 
 body {
@@ -36,19 +28,18 @@ body {
   place-items: start center;
   margin: 0;
   padding: 0;
-  font: 14px/1 'Segoe UI', sans-serif;
   background: var(--color-neutral-5);
   color: var(--color-neutral-90);
 }
 
-h1, h2, p {
-  margin: 0;
-  padding: 0;
+::selection {
+  background: var(--color-accent);
+  color: var(--color-neutral-10);
 }
 
 #quiz {
   display: grid;
-  gap: 8px;
+  gap: var(--size-2);
   width: 450px;
   margin: var(--size-2);
   padding: var(--size-2);
@@ -56,30 +47,43 @@ h1, h2, p {
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 16px;
+  font-size: var(--size-3);
 }
 
-#progress, 
+#status {
+  display: grid;
+  grid-template-areas: 
+  "progress progress"
+  "count timer";
+  gap: var(--size-1);
+  margin-block: var(--size-2);
+}
+
+#progress,
 #progress::after {
+  height: var(--size-1);
   border-radius: var(--border-radius);
 }
 
 #progress {
+  grid-area: progress;
   display: flex;
-  height: 8px;
   background: var(--color-neutral-20);
-}
-
-#question-number {
-  margin-bottom: 16px;
 }
 
 #progress::after {
   content: '';
-  height: 8px;
   width: 100px;
   background: var(--color-accent);
+}
+
+#count {
+  grid-area: count;
+}
+
+#timer {
+  grid-area: timer;
+  text-align: right;
 }
 
 h2 {
@@ -100,7 +104,7 @@ label {
   user-select: none;
   display: flex;
   gap: var(--size-1);
-  padding: var(--size-2) 12px;
+  padding: var(--size-2);
   background: var(--color-neutral-10);
   border-radius: var(--border-radius);
   transition: var(--transition);
@@ -112,42 +116,76 @@ label:hover {
 }
 
 label:has(input:checked) {
-  background: #eee;
-  color: #111;
+  background: var(--color-neutral-90);
+  color: var(--color-neutral-10);
 }
 
-input[type="radio"] {
+input[type='radio'] {
   appearance: none;
   display: grid;
-  width: 1.15em;
-  height: 1.15em;
+  width: var(--size-2);
+  height: var(--size-2);
   place-content: center;
   margin: 0;
-  font: inherit;
   transform: translateY(-0.075em);
   background: var(--color-neutral-10);
   border: 2px solid var(--color-neutral-90);
   border-radius: 50%;
-  color: currentColor;
 }
 
-input[type="radio"]:checked {
+input[type='radio']:checked {
   background: var(--color-neutral-90);
   border-color: var(--color-neutral-10);
   border-width: 3px;
 }
 
-input[type="radio"]:focus {
+input[type='radio']:focus {
   outline: none;
 }
 
-label:has(input[type="radio"]:focus-visible) {
+label:has(input[type='radio']:focus-visible) {
   background: var(--color-neutral-20);
 }
 
-label:has(input[type="radio"]:checked:focus-visible) {
+label:has(input[type='radio']:checked:focus-visible) {
   background: var(--color-neutral-90);
   color: var(--color-neutral-10);
+}
+
+#controls {
+  display: flex;
+  place-content: space-around;
+  gap: var(--size-2);
+  margin-block: var(--size-1);
+}
+
+input[type='button'] {
+  width: 100%;
+  padding: var(--size-2);
+  background: var(--color-neutral-10);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--color-neutral-90);
+  transition: var(--transition);
+}
+
+input[type='button']:hover {
+  cursor: pointer;
+  background: var(--color-neutral-20);
+}
+
+input[type='button']:focus {
+  outline: none;
+  transition: none;
+}
+input[type='button']:focus-visible {
+  outline: 2px solid var(--color-neutral-90);
+}
+
+input[type='button']:active {
+  background: var(--color-neutral-90);
+  color: var(--color-neutral-10);
+  transition: none;
 }
 
 details {
@@ -181,41 +219,4 @@ summary:focus-visible {
 
 details p {
   margin-top: var(--size-1);
-}
-
-#controls {
-  display: flex;
-  place-content: space-around;
-  gap: var(--size-2);
-  margin-block: 8px;
-}
-
-input[type='button'] {
-  width: 100%;
-  padding: var(--size-2);
-  background: var(--color-neutral-10); 
-  border: none;
-  border-radius: var(--border-radius);
-  color: var(--color-neutral-90); 
-  transition: var(--transition);
-}
-
-input[type='button']:hover {
-  cursor: pointer;
-  background: var(--color-neutral-20);
-}
-
-input[type='button']:focus {
-  outline: none;
-  transition: none;
-}
-input[type='button']:focus-visible {
-  outline: 2px solid var(--color-neutral-90);
-
-}
-
-input[type='button']:active {
-  background: var(--color-neutral-90);
-  color: var(--color-neutral-10);
-  transition: none;
 }
